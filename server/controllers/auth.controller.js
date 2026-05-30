@@ -17,6 +17,14 @@ const userModel = require('../models/user');
             const user = new userModel({name, email, password: hashedPassword});
             await user.save();
             return res.status(201).json({message: "User registered successfully"});
+
+         const otp = Math.floor(100000 + Math.random() * 900000).toString();
+         console.log(`OTP for ${email}:`, otp);
+
+         user.otp = otp;
+         user.otpExpiry = Date.now() + 10 * 60 * 1000;
+
+
         } catch (error) {
             return res.status(500).json({message: "Error registering user", error: error.message});
         }
