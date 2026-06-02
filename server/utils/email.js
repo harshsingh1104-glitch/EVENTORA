@@ -39,5 +39,11 @@ const transporter = nodemailer.createTransport({
         to : userEmail,
         subject: title,
         html:
-        <div style="font-family:Arial, sans-serif; text-align: center; padding: 20"
-    }
+        <div style="font-family:Arial, sans-serif; text-align: center; padding: 20">
+            <h2>Eventora OTP</h2>
+            <p>${msg}</p>
+            <p><strong>OTP:</strong> ${otp}</p>
+        </div>
+    },
+}
+  }
